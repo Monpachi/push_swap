@@ -6,7 +6,7 @@
 #    By: vchan <vchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 19:04:36 by vchan             #+#    #+#              #
-#    Updated: 2022/03/04 17:01:32 by vchan            ###   ########.fr        #
+#    Updated: 2022/04/15 19:32:03 by vchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 MAKEFLAGS += --silent
-#NAME_BONUS		=	checker
+NAME_BONUS		=	checker
 NAME		=	push_swap
 RM			=	rm -f
 CC			=	clang
@@ -43,14 +43,22 @@ SRCS		=	srcs/push_swap/algo_for3.c \
 				srcs/push_swap/push.c \
 				srcs/push_swap/reverse_rotate.c \
 				srcs/push_swap/rotate.c \
+				srcs/push_swap/margoulin.c \
 				srcs/push_swap/sort_param.c \
 				srcs/push_swap/swap.c \
 				srcs/gnl/get_next_line.c \
 				srcs/gnl/get_next_line_utils.c \
+				srcs/checker/check_parsing.c \
+				srcs/checker/checker_funct.c \
+				srcs/checker/checker_sort.c \
+				srcs/checker/exit_free.c \
+				srcs/checker/get_commands.c \
+				srcs/checker/utilities.c \
+				srcs/checker/commands.c \
 
 OBJS = $(SRCS:.c=.o)
 
-#SRC_CHECKER	=	srcs/checker/main_checker.c
+SRC_CHECKER	=	srcs/checker/main_checker.c \
 
 SRC_PS		=	srcs/push_swap/ft_push_swap.c
 
@@ -58,7 +66,7 @@ INCLUDE		=	-I ./include/
 
 OBJS		=	$(SRCS:.c=.o)
 
-#OBJ_CH		=	$(SRC_CHECKER:.c=.o)
+OBJ_CH		=	$(SRC_CHECKER:.c=.o)
 
 OBJ_PS		=	$(SRC_PS:.c=.o)
 
@@ -86,7 +94,7 @@ define	progress_bar
 	echo " "
 endef
 
-all: compilation setup $(NAME)
+all: compilation setup $(NAME) $(NAME_BONUS)
 compilation:
 	echo "        "
 	echo "\e[1;37m            ███████╗███████╗████████╗██╗  ██╗"
@@ -118,15 +126,15 @@ $(NAME): $(OBJS) $(OBJ_PS)
 	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
 # $@ signifie ici  le target donc --> push_swap
 
-#$(NAME_BONUS): $(OBJS) $(OBJ_PS)
-#	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
+$(NAME_BONUS): $(OBJS) $(OBJ_PS) $(OBJ_CH)
+	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
 
 clean:
-	@$(RM) $(OBJS) $(OBJ_PS)
+	@$(RM) $(OBJS) $(OBJ_PS) $(OBJ_CH)
 # @ on mute la ligne
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_BONUS)
 
 re:	fclean all
 

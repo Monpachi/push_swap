@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:05:52 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/11 17:05:53 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/15 18:59:59 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	if_not_double(t_list **stack_a, t_list **stack_b, int pos)
 
 void	bestmove(t_list **stack_a, t_list **stack_b)
 {
-	//t_list	*tmp;
 	int		i;
 	int		pos;
 
@@ -107,7 +106,6 @@ void	bestmove(t_list **stack_a, t_list **stack_b)
 			if_double(stack_a, stack_b, pos);
 		else
 			if_not_double(stack_a, stack_b, pos);
-		//tmp = *stack_a;
 		if ((*stack_b)->next == NULL)
 		{
 			i = algoplus(stack_a, (*stack_b)->number);

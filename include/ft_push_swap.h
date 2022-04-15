@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:08:10 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/13 15:52:21 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/15 19:38:28 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # include <stdlib.h>
 # include <unistd.h>
- # include <limits.h>
+# include <limits.h>
 
 typedef struct s_list
 {
 	int				number;
 	struct s_list	*next;
+	char			*command;
 }	t_list;
 
 void	to_sort3(t_list **stack_a, t_list **stack_b);
@@ -79,6 +80,7 @@ void	rotate_b(t_list **stack);
 void	rotate_rr(t_list **stack_a, t_list **stack_b);
 void	sort_param2(t_list **stack_a);
 void	sort_param3(t_list	**stack_a);
+void	sort_param4(t_list **stack_a, t_list**stack_b);
 void	sort_param5(t_list **stack_a, t_list **stack_b);
 void	margoulin(t_list **stack_a);
 void	sort_paramplus(t_list **stack_a, t_list **stack_b);
@@ -92,5 +94,29 @@ char	**ft_split(char const *s, char c);
 int		check_sort(t_list *stack_a);
 void	ft_lstclear(t_list **stack);
 void	ft_putstr_fd(char *s, int fd);
+
+/*****************************************************************************/
+/*									BONUS									 */
+/*****************************************************************************/
+
+int		ft_strcmp(char *s1, char *s2);
+void	push_fct(t_list **stack_a, t_list **stack_b, t_list *command);
+void	swap_fct(t_list **stack_a, t_list **stack_b, t_list *command);
+void	rotate_fct(t_list **stack_a, t_list **stack_b, t_list *command);
+void	rev_rotate_fct(t_list **stack_a, t_list **stack_b, t_list *command);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstnew_checker(void *content);
+char	*ft_strdup( char *s);
+char	*get_next_line(int fd);
+void	get_push(t_list *commands, char *s);
+void	get_swap(t_list *commands, char *s);
+void	get_rotate(t_list *commands, char *s);
+void	get_rev_rotate(t_list *commands, char *s);
+void	exit_success(t_list **stack_a, t_list **stack_b, t_list *commands);
+void	exit_failure(t_list **stack_a, t_list **stack_b, t_list *commands);
+int	ft_read_command(t_list *commands);
+void	use_commands(t_list	*commands, t_list **stack_a, t_list **stack_b);
+void	checker(t_list **stack_a, t_list **stack_b, t_list *commands, int argc);
+void	checker_sort(int argc, t_list *stack_a);
 
 #endif

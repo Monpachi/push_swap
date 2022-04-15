@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:08:57 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/11 17:11:45 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/15 19:07:34 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ void	sort_param3(t_list	**stack_a)
 
 void	sort_param5(t_list **stack_a, t_list **stack_b)
 {
-	//t_list	*tmp;
-	//int		i;
-
-	//i = 0 ;
-	//tmp = *stack_a;
 	pre_sort(stack_a, stack_b);
 	sort_param3(stack_a);
 	bestmove(stack_a, stack_b);
@@ -45,12 +40,16 @@ void	sort_param5(t_list **stack_a, t_list **stack_b)
 	return ;
 }
 
-void	margoulin(t_list **stack_a)
+void	sort_param4(t_list **stack_a, t_list**stack_b)
 {
 	int	i;
 
-	i = lowest(stack_a);
+	pre_sort(stack_a, stack_b);
+	sort_param3(stack_a);
+	i = algoplus(stack_a, (*stack_b)->number);
 	move_a(stack_a, i);
+	push_to_a(stack_b, stack_a);
+	margoulin(stack_a);
 }
 
 void	sort_paramplus(t_list **stack_a, t_list **stack_b)
