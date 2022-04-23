@@ -1,45 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_checker.c                                     :+:      :+:    :+:   */
+/*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 16:03:38 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/23 19:10:27 by vchan            ###   ########.fr       */
+/*   Created: 2022/04/23 15:07:56 by vchan             #+#    #+#             */
+/*   Updated: 2022/04/23 15:54:53 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_checker.h"
+#include "ft_push_swap.h"
 
-void	checker(t_list *stack_a, t_list *stack_b)
+char	exit_failure(char *s)
 {
-	ft_read_command(&stack_a, &stack_b);
-	if (stack_b || check_sort(stack_a) == 1)
-		exit_failure("\033[1;31mKO\n\033[0m");
-	else
-		exit_success(stack_a);
+	ft_putstr_fd(s, 2);
+	exit(EXIT_FAILURE);
 }
 
-int	main(int argc, char **argv)
+int	parsing(int argc, char **argv)
 {
 	int		i;
 	char	**str;
-	t_list	*stack_a;
-	t_list	*stack_b;
 
-	stack_b = NULL;
 	if (argc > 1)
 	{
 		i = 0;
 		str = argv + 1;
 		if (argc == 2)
 			str = ft_split(argv[1], ' ');
-		parsing2(argc, argv);
-		if (parsing(argc, argv) == 1)
-			exit_failure("Error\n");
-		stack_a = newstack(str);
-		checker(stack_a, stack_b);
+		while ((str[i] != NULL && argc > i + 1))
+		{
+			if (is_doublon(str) || is_nbr(str) || int_overflow(str[i]))
+			{
+				return (1);
+			}
+			i++;
+		}
 	}
+	return (0);
+}
+
+int	parsing2(int argc, char **argv)
+{
+	if (parsing(argc, argv) == 1)
+		ft_putstr_fd("Error\n", 2);
 	return (0);
 }

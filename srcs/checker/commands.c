@@ -1,46 +1,36 @@
-#include "ft_push_swap.h"
+#include "ft_checker.h"
 
-void	use_commands(t_list	*commands, t_list **stack_a, t_list **stack_b)
+void	not_command(char *line)
 {
-	t_list	*tmp;
-
-	tmp = commands->next;
-	while (tmp)
+	if (!ft_strcmp(line, "sa\n") || !ft_strcmp(line, "sb\n")
+		|| !ft_strcmp(line, "ss\n") || !ft_strcmp(line, "ra\n")
+		|| !ft_strcmp(line, "rb\n") || !ft_strcmp(line, "rr\n")
+		|| !ft_strcmp(line, "rra\n") || !ft_strcmp(line, "rrb\n")
+		|| !ft_strcmp(line, "rrr\n") || !ft_strcmp(line, "pa\n")
+		|| !ft_strcmp(line, "pb\n"))
+		return ;
+	else
 	{
-		swap_fct(stack_a, stack_b, tmp);
-		push_fct(stack_a, stack_b, tmp);
-		rotate_fct(stack_a, stack_b, tmp);
-		rev_rotate_fct(stack_a, stack_b, tmp);
-		tmp = tmp->next;
+		free(line);
+		exit_failure("Error\n");
 	}
-	return ;
 }
 
-int	ft_read_command(t_list *commands)
+void	ft_read_command(t_list **stack_a, t_list **stack_b)
 {
-	char	*ret;
+	char	*line;
 
-	ret = 0;
-	while (ret)
+	line = get_next_line(0);
+	while (line && *line != '\0')
 	{
-		ret = get_next_line(STDIN_FILENO);
-		if (!ft_strcmp(ret, "sa") || !ft_strcmp(ret, "sb")
-			|| !ft_strcmp(ret, "ss"))
-			get_swap(commands, ret);
-		else if (!ft_strcmp(ret, "pa") || !ft_strcmp(ret, "pb"))
-			get_push(commands, ret);
-		else if (!ft_strcmp(ret, "ra") || !ft_strcmp(ret, "rb")
-			|| !ft_strcmp(ret, "rr"))
-			get_rotate(commands, ret);
-		else if (!ft_strcmp(ret, "rra")
-			|| !ft_strcmp(ret, "rrb") || !ft_strcmp(ret, "rrr"))
-			get_rev_rotate(commands, ret);
-		else
-		{
-			free(ret);
-			return (-1);
-		}
-		free(ret);
+		not_command(line);
+		if_swap(stack_a, stack_b, line);
+		if_push(stack_a, stack_b, line);
+		if_reverse(stack_a, stack_b, line);
+		if_rotate(stack_a, stack_b, line);
+		free(line);
+		line = get_next_line(0);
 	}
-	return (0);
+	free (line);
+	return ;
 }

@@ -12,6 +12,13 @@
 
 #include "ft_push_swap.h"
 
+int	ft_isdigit(int c)
+{
+	if ((c >= '0' && c <= '9' ) || c == '-' || c == '+')
+		return (1);
+	return (0);
+}
+
 int	mini_atoi(char *str)
 {
 	long	nb;
@@ -20,7 +27,7 @@ int	mini_atoi(char *str)
 
 	i = 0;
 	sign = 1;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ' )
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -29,6 +36,8 @@ int	mini_atoi(char *str)
 		i++;
 	}
 	nb = 0;
+	if (!ft_isdigit(str[i]))
+		exit_failure("Error\n");
 	while (str[i])
 	{
 		nb = nb * 10 + (str[i] - '0');
@@ -79,13 +88,6 @@ int	is_doublon(char	**valstr)
 				return (1);
 		}
 	}
-	return (0);
-}
-
-int	ft_isdigit(int c)
-{
-	if ((c >= '0' && c <= '9' ) || c == '-' || c == '+')
-		return (1);
 	return (0);
 }
 

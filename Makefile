@@ -6,16 +6,16 @@
 #    By: vchan <vchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 19:04:36 by vchan             #+#    #+#              #
-#    Updated: 2022/04/15 19:32:03 by vchan            ###   ########.fr        #
+#    Updated: 2022/04/23 18:09:21 by vchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ################################################################################
 #                                     CONFIG                                   #
 ################################################################################
-MAKEFLAGS += --silent
-NAME_BONUS		=	checker
+MAKEFLAGS += 	--silent
 NAME		=	push_swap
+NAME_BONUS	=	checker
 RM			=	rm -f
 CC			=	clang
 CFLAGS		=	-Wall -Wextra -Werror -g3
@@ -46,29 +46,34 @@ SRCS		=	srcs/push_swap/algo_for3.c \
 				srcs/push_swap/margoulin.c \
 				srcs/push_swap/sort_param.c \
 				srcs/push_swap/swap.c \
+				srcs/push_swap/utils_total_move.c \
 				srcs/gnl/get_next_line.c \
 				srcs/gnl/get_next_line_utils.c \
-				srcs/checker/check_parsing.c \
-				srcs/checker/checker_funct.c \
-				srcs/checker/checker_sort.c \
-				srcs/checker/exit_free.c \
-				srcs/checker/get_commands.c \
-				srcs/checker/utilities.c \
+				srcs/push_swap/parsing2.c \
+				srcs/gnl/get_next_line.c \
+				srcs/gnl/get_next_line_utils.c \
+				srcs/checker/check_push.c \
+				srcs/checker/check_rotate.c \
+				srcs/checker/check_reverse.c \
+				srcs/checker/check_swap.c \
 				srcs/checker/commands.c \
+				srcs/checker/exit.c \
+				srcs/checker/move_fct.c \
+				srcs/checker/check_utils2.c \
 
 OBJS = $(SRCS:.c=.o)
 
-SRC_CHECKER	=	srcs/checker/main_checker.c \
+SRC_CHECKER	=	srcs/checker/main_checker.c
 
 SRC_PS		=	srcs/push_swap/ft_push_swap.c
 
-INCLUDE		=	-I ./include/
+INCLUDE		=	-I ./include
 
 OBJS		=	$(SRCS:.c=.o)
 
-OBJ_CH		=	$(SRC_CHECKER:.c=.o)
-
 OBJ_PS		=	$(SRC_PS:.c=.o)
+
+OBJ_CH		=	$(SRC_CHECKER:.c=.o)
 
 %.o:			%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
@@ -123,11 +128,11 @@ setup:
 	@$(call progress_bar)
 
 $(NAME): $(OBJS) $(OBJ_PS)
-	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $? || $(MAKE) $@
 # $@ signifie ici  le target donc --> push_swap
 
-$(NAME_BONUS): $(OBJS) $(OBJ_PS) $(OBJ_CH)
-	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
+$(NAME_BONUS): $(OBJS) $(OBJ_CH)
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $? || $(MAKE) $@
 
 clean:
 	@$(RM) $(OBJS) $(OBJ_PS) $(OBJ_CH)

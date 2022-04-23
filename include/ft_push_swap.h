@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:08:10 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/15 19:38:28 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/23 18:12:57 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-
-typedef struct s_list
-{
-	int				number;
-	struct s_list	*next;
-	char			*command;
-}	t_list;
+# include "ft_utils.h"
 
 void	to_sort3(t_list **stack_a, t_list **stack_b);
 void	algo3_superior_inferior(t_list **stack_a);
@@ -56,17 +50,8 @@ int		get_to_b(t_list **stack_b, int pos);
 int		rankmin(t_list **stack_a);
 int		rankmax(t_list **stack_a);
 void	pre_sort(t_list **stack_a, t_list **stack_b);
-t_list	*ft_lstnew(int number);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **alst, t_list *new);
-void	*newstack(char **argv);
 void	print_stack(t_list *list);
 int		ft_strlen(char *str);
-int		mini_atoi(char *str);
-int		int_overflow(char *str);
-int		is_doublon(char	**valstr);
-int		ft_isdigit(int c);
-int		is_nbr(char **valstr);
 void	push(t_list **stack_a, t_list **stack_b);
 void	push_to_b(t_list **stack_a, t_list **stack_b);
 void	push_to_a(t_list **stack_b, t_list **stack_a);
@@ -88,35 +73,7 @@ void	swap(t_list **pile);
 void	swap_a(t_list **stack_a);
 void	swap_b(t_list **stack_b);
 void	swap_them(t_list **stack_a, t_list **stack_b);
-int		strlenlist(t_list *stack);
 int		strlenlistparam(t_list *stack);
-char	**ft_split(char const *s, char c);
-int		check_sort(t_list *stack_a);
-void	ft_lstclear(t_list **stack);
-void	ft_putstr_fd(char *s, int fd);
-
-/*****************************************************************************/
-/*									BONUS									 */
-/*****************************************************************************/
-
-int		ft_strcmp(char *s1, char *s2);
-void	push_fct(t_list **stack_a, t_list **stack_b, t_list *command);
-void	swap_fct(t_list **stack_a, t_list **stack_b, t_list *command);
-void	rotate_fct(t_list **stack_a, t_list **stack_b, t_list *command);
-void	rev_rotate_fct(t_list **stack_a, t_list **stack_b, t_list *command);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstnew_checker(void *content);
-char	*ft_strdup( char *s);
-char	*get_next_line(int fd);
-void	get_push(t_list *commands, char *s);
-void	get_swap(t_list *commands, char *s);
-void	get_rotate(t_list *commands, char *s);
-void	get_rev_rotate(t_list *commands, char *s);
-void	exit_success(t_list **stack_a, t_list **stack_b, t_list *commands);
-void	exit_failure(t_list **stack_a, t_list **stack_b, t_list *commands);
-int	ft_read_command(t_list *commands);
-void	use_commands(t_list	*commands, t_list **stack_a, t_list **stack_b);
-void	checker(t_list **stack_a, t_list **stack_b, t_list *commands, int argc);
-void	checker_sort(int argc, t_list *stack_a);
+int		utils_move2(t_list **stack_a, t_list **stack_b, int len_a, int len_b);
 
 #endif

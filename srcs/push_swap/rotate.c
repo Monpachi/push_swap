@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:08:54 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/11 17:11:00 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/23 14:52:28 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	rotate_a(t_list **stack)
 
 void	rotate_b(t_list **stack)
 {
-
 	rotate(stack);
 	ft_putstr_fd("rb\n", 1);
 }

@@ -6,11 +6,25 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 17:45:43 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/11 18:28:47 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/23 15:59:57 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
+#include <stdio.h>
+
+/*
+void	print_stack(t_list *list)
+{
+	printf("----==== PRINT STACK ====----\n");
+	while (list)
+	{
+		printf("%d\n", list->number);
+		list = list->next;
+	}
+	printf("-----------------------------\n");
+}
+*/
 
 int	main(int argc, char **argv)
 {
@@ -26,18 +40,11 @@ int	main(int argc, char **argv)
 		str = argv + 1;
 		if (argc == 2)
 			str = ft_split(argv[1], ' ');
-		while (str[i] != NULL || argc > i + 1)
-		{
-			if (is_doublon(str) || is_nbr(str) || int_overflow(str[i]))
-			{
-				ft_putstr_fd("Error\n", 2);
-				return (1);
-			}
-			i++;
-		}
+		parsing2(argc, argv);
+		if (parsing(argc, argv) == 1)
+			return (0);
 		stack_a = newstack(str);
-		if (check_sort(stack_a) == 1)
-			checkandsort(argc, &stack_a, &stack_b);
+		checkandsort(argc, &stack_a, &stack_b);
 		ft_lstclear(&stack_a);
 	}
 	return (0);

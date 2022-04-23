@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:06:03 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/11 17:07:28 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/23 15:05:06 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,8 @@ void	both_rrr(t_list **stack_a, t_list **stack_b, int pos, int i)
 	len_b = strlenlistparam(*stack_b);
 	l = countmove_stack(i, len_a);
 	j = countmove_stack(pos, len_b);
-	while (j > 0 && l > 0)
-	{
+	while (j > 0 && l > 0 && j-- && l--)
 		reverse_rrr(stack_a, stack_b);
-		j--;
-		l--;
-	}
 	while (l > 0)
 	{
 		reverse_rotate_a(stack_a);
