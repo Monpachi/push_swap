@@ -6,7 +6,7 @@
 #    By: vchan <vchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 19:04:36 by vchan             #+#    #+#              #
-#    Updated: 2022/04/23 18:09:21 by vchan            ###   ########.fr        #
+#    Updated: 2022/04/25 17:48:54 by vchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ NAME_BONUS	=	checker
 RM			=	rm -f
 CC			=	clang
 CFLAGS		=	-Wall -Wextra -Werror -g3
-AUTHOR = vchan@student.42.fr
 
 ################################################################################
 #                          PROGRAM'S SRCS / OBJS                               #
@@ -49,8 +48,10 @@ SRCS		=	srcs/push_swap/algo_for3.c \
 				srcs/push_swap/utils_total_move.c \
 				srcs/gnl/get_next_line.c \
 				srcs/gnl/get_next_line_utils.c \
-				srcs/push_swap/parsing2.c \
-				srcs/gnl/get_next_line.c \
+				srcs/push_swap/parsing2.c
+
+
+SRCS_BONUS	=	srcs/gnl/get_next_line.c \
 				srcs/gnl/get_next_line_utils.c \
 				srcs/checker/check_push.c \
 				srcs/checker/check_rotate.c \
@@ -60,20 +61,27 @@ SRCS		=	srcs/push_swap/algo_for3.c \
 				srcs/checker/exit.c \
 				srcs/checker/move_fct.c \
 				srcs/checker/check_utils2.c \
+				srcs/push_swap/ft_utilities.c \
+				srcs/push_swap/parsing.c \
+				srcs/push_swap/parsing2.c \
+				srcs/push_swap/check_sort.c \
+				srcs/push_swap/free.c \
+				srcs/push_swap/ft_split.c \
+				srcs/push_swap/ft_push_swap_struct.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS 		= 	$(SRCS:.c=.o)
+OBJS_BONUS	= 	$(SRCS_BONUS:.c=.o)
 
 SRC_CHECKER	=	srcs/checker/main_checker.c
-
 SRC_PS		=	srcs/push_swap/ft_push_swap.c
 
 INCLUDE		=	-I ./include
 
 OBJS		=	$(SRCS:.c=.o)
-
 OBJ_PS		=	$(SRC_PS:.c=.o)
-
 OBJ_CH		=	$(SRC_CHECKER:.c=.o)
+
+all: compilation setup $(NAME)
 
 %.o:			%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
@@ -99,7 +107,6 @@ define	progress_bar
 	echo " "
 endef
 
-all: compilation setup $(NAME) $(NAME_BONUS)
 compilation:
 	echo "        "
 	echo "\e[1;37m            ███████╗███████╗████████╗██╗  ██╗"
@@ -128,14 +135,14 @@ setup:
 	@$(call progress_bar)
 
 $(NAME): $(OBJS) $(OBJ_PS)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $? || $(MAKE) $@
+	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
 # $@ signifie ici  le target donc --> push_swap
 
-$(NAME_BONUS): $(OBJS) $(OBJ_CH)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $? || $(MAKE) $@
+checker: $(OBJS_BONUS) $(OBJ_CH)
+	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
 
 clean:
-	@$(RM) $(OBJS) $(OBJ_PS) $(OBJ_CH)
+	@$(RM) $(OBJS) $(OBJ_PS) $(OBJ_CH) $(OBJS_BONUS)
 # @ on mute la ligne
 
 fclean: clean
