@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 17:45:43 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/23 15:59:57 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/27 15:54:42 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 		str = argv + 1;
 		if (argc == 2)
 			str = ft_split(argv[1], ' ');
-		parsing2(argc, argv);
 		if (parsing(argc, argv) == 1)
 			return (0);
 		stack_a = newstack(str);

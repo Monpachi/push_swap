@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 14:55:28 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/23 19:09:05 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/27 15:46:41 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	check_sort(t_list *stack_a)
 	int		the_next;
 
 	tmp = stack_a;
-
-	while (tmp->next)
+	while (tmp && tmp->next)
 	{
 		this = tmp->number;
 		number = this;

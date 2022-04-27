@@ -6,7 +6,7 @@
 #    By: vchan <vchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 19:04:36 by vchan             #+#    #+#              #
-#    Updated: 2022/04/25 17:48:54 by vchan            ###   ########.fr        #
+#    Updated: 2022/04/25 18:17:59 by vchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,11 +135,11 @@ setup:
 	@$(call progress_bar)
 
 $(NAME): $(OBJS) $(OBJ_PS)
-	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
+	$(CC) $(CFLAGS) -o $@ $^ || $(MAKE) $@
 # $@ signifie ici  le target donc --> push_swap
 
 checker: $(OBJS_BONUS) $(OBJ_CH)
-	$(CC) $(CFLAGS) -o $@ $? || $(MAKE) $@
+	$(CC) $(CFLAGS) -o $@ $^ || $(MAKE) $@
 
 clean:
 	@$(RM) $(OBJS) $(OBJ_PS) $(OBJ_CH) $(OBJS_BONUS)
