@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:08:10 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/29 16:21:30 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 17:01:36 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	move_b(t_list **stack_b, int i);
 void	if_double(t_list **stack_a, t_list **stack_b, int pos);
 void	if_not_double(t_list **stack_a, t_list **stack_b, int pos);
 void	bestmove(t_list **stack_a, t_list **stack_b);
-void	checkandsort(int argc, t_list **stack_a, t_list **stack_b);
+void	checkandsort(t_list **stack_a, t_list **stack_b);
 int		if_both_rr(t_list **stack, int i);
 int		if_both_rrr(t_list **stack, int i);
 int		countmove_both(t_list **stack_a, t_list **stack_b, int i, int k);
@@ -75,6 +75,5 @@ void	swap_b(t_list **stack_b);
 void	swap_them(t_list **stack_a, t_list **stack_b);
 int		strlenlistparam(t_list *stack);
 int		utils_move2(t_list **stack_a, t_list **stack_b, int len_a, int len_b);
-char	*ft_strdup( char *s);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 16:03:38 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/27 16:05:40 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 16:58:05 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	checker(t_list *stack_a, t_list *stack_b)
 		exit_success(stack_a);
 }
 
+static int	strlentab(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -34,10 +44,9 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		i = 0;
-		str = argv + 1;
-		if (argc == 2)
-			str = ft_split(argv[1], ' ');
-		if (parsing(argc, argv) == 1)
+		str = NULL;
+		str = ft_parse_av(argc, argv);
+		if (parsing(strlentab(str), str) == 1)
 			exit_failure("Error\n");
 		stack_a = newstack(str);
 		checker(stack_a, stack_b);

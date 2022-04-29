@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:24:10 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/25 18:24:10 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 16:57:55 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ int		check_sort(t_list *stack_a);
 int		parsing2(int argc, char **argv);
 int		parsing(int argc, char **argv);
 char	**ft_split(char const *s, char c);
+char	**ft_parse_av(int ac, char **av);
+char	*ft_strdup( char *s);
 
 #endif

@@ -6,17 +6,16 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:05:56 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/29 16:46:23 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 17:05:47 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	checkandsort(int argc, t_list **stack_a, t_list **stack_b)
+void	checkandsort(t_list **stack_a, t_list **stack_b)
 {
 	int	i;
 
-	(void)argc;
 	i = strlenlistparam(*stack_a);
 	if (check_sort(*stack_a) == 1)
 	{
