@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 15:07:56 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/27 16:03:03 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 16:45:38 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	parsing(int argc, char **argv)
 	{
 		i = 0;
 		str = argv + 1;
-		if (argc == 2)
-			str = ft_split(argv[1], ' ');
+		if (!str[i])
+			return (1);
 		while ((str[i] != NULL && argc > i + 1))
 		{
 			if (is_doublon(str) || is_nbr(str) || int_overflow(str[i]))

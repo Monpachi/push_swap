@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 17:45:43 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/27 15:54:42 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 16:46:37 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,39 @@ void	print_stack(t_list *list)
 }
 */
 
+char	**ft_parse_av(int ac, char **av)
+{
+	char	**nbr;
+	char	*av_str;
+	char	*tmp;
+	int		i;
+
+	av_str = ft_strdup("");
+	i = 0;
+	while (++i < ac)
+	{
+		tmp = ft_strjoin(av_str, av[i]);
+		free(av_str);
+		av_str = tmp;
+		tmp = ft_strjoin(av_str, " ");
+		free(av_str);
+		av_str = tmp;
+	}
+	nbr = ft_split(av_str, ' ');
+	free(av_str);
+	return (nbr);
+}
+
+static int	strlentab(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -37,11 +70,10 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		i = 0;
-		str = argv + 1;
-		if (argc == 2)
-			str = ft_split(argv[1], ' ');
-		if (parsing(argc, argv) == 1)
-			return (0);
+		str = NULL;
+		str = ft_parse_av(argc, argv);
+		if (parsing(strlentab(str), str) == 1)
+			exit_failure("Error\n");
 		stack_a = newstack(str);
 		checkandsort(argc, &stack_a, &stack_b);
 		ft_lstclear(&stack_a);

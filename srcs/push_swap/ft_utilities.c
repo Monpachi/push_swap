@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 17:45:00 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/23 14:55:49 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 16:39:47 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	strlenlistparam(t_list *stack)
 {
 	int	i;
 
-	i = 1;
-	while (stack->next)
+	i = 0;
+	while (stack)
 	{
 		stack = (stack)->next;
 		i++;

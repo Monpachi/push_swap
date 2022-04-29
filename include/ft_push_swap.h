@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:08:10 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/23 18:12:57 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 16:21:30 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ void	swap_b(t_list **stack_b);
 void	swap_them(t_list **stack_a, t_list **stack_b);
 int		strlenlistparam(t_list *stack);
 int		utils_move2(t_list **stack_a, t_list **stack_b, int len_a, int len_b);
+char	*ft_strdup( char *s);
 
 #endif

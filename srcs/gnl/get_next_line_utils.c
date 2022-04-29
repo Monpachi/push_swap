@@ -6,7 +6,7 @@
 /*   By: vchan <vchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:59:48 by vchan             #+#    #+#             */
-/*   Updated: 2022/04/25 18:24:02 by vchan            ###   ########.fr       */
+/*   Updated: 2022/04/29 16:25:11 by vchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ char	*ft_strjoin(char *ret_value, char *buf)
 	while (buf[j] != '\0')
 		new[i++] = buf[j++];
 	new[ft_strlen(ret_value) + ft_strlen(buf)] = '\0';
-	free(ret_value);
 	return (new);
 }
 
